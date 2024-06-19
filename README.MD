@@ -171,3 +171,60 @@ docker run -d --name <container-name> 983441761380.dkr.ecr.eu-west-1.amazonaws.c
 
 By following these instructions, team members can easily pull and run Docker images created by other participants. If there are any specific configurations or ports that need to be exposed, they should be added to the docker run command accordingly.
 
+### Task-7: Install and Configure the kubectl
+The Kubernetes command-line tool, kubectl, allows you to run commands against Kubernetes clusters. You can use kubectl to deploy applications, inspect and manage cluster resources, and view logs.
+
+https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+
+Download kubectl
+
+```
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+```
+
+Setting permission and env
+
+```
+chmod +x ./kubectl
+mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH
+echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
+```
+
+Verify installation
+
+```
+kubectl version --client
+```
+
+Update kubectl config
+
+```
+aws eks update-kubeconfig --region region-code --name <your-name>-my-eks-cluster
+```
+
+### Task-8: Create your K8s Deployment
+Locate the bikes-deployment.yaml and update with the correct image url
+
+```
+containers:
+  image: <image-url>
+```
+
+Deploy the bikes microservice
+
+```
+kubectl apply -f bikes-deployment.yaml
+```
+
+Locate the cars-deployment.yaml and update with the correct image url
+
+```
+containers:
+  image: <image-url>
+```
+
+Deploy the cars microservice
+
+```
+kubectl apply -f cars-deployment.yaml
+```
