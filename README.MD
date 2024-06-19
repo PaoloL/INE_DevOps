@@ -112,11 +112,11 @@ Build your Docker image using the following command.
 
 Tag your image so you can push the image to this repository:
 
-`docker tag bikes:latest 983441761380.dkr.ecr.eu-west-1.amazonaws.com/<your-name>-bikes-ecr-repository:latest`
+`docker tag bikes:latest 983441761380.dkr.ecr.eu-west-1.amazonaws.com/<yourname>-bikes_repo:latest`
 
 Run the following command to push this image to your newly created AWS repository:
 
-`docker push 983441761380.dkr.ecr.eu-west-1.amazonaws.com/<your-name>-bikes-ecr-repository:latest` 
+`docker push 983441761380.dkr.ecr.eu-west-1.amazonaws.com/<yourname>-bikes_repo:latest` 
 
 Your microservice is Up & Running
 
@@ -129,11 +129,27 @@ Build your Docker image using the following command.
 
 Tag your image so you can push the image to this repository:
 
-`docker tag cars:latest 983441761380.dkr.ecr.eu-west-1.amazonaws.com/<your-name>-cars-ecr-repository:latest`
+`docker tag cars:latest 983441761380.dkr.ecr.eu-west-1.amazonaws.com/<yourname>-bikes_repo:latest`
 
 Run the following command to push this image to your newly created AWS repository:
 
-`docker push 983441761380.dkr.ecr.eu-west-1.amazonaws.com/<your-name>-cars-ecr-repository:latest` 
+`docker push 983441761380.dkr.ecr.eu-west-1.amazonaws.com/<yourname>-bikes_repo:latest` 
 
-Your microservice is Up & Running
+Your microservice is published
+
+### Task-6: Try to pull and run image from other
+
+Pull Docker Image
+
+```
+docker pull 983441761380.dkr.ecr.eu-west-1.amazonaws.com/<name>-bikes_repo:latest
+```
+
+Run Docker Image:
+
+```
+docker run -d --name <container-name> 983441761380.dkr.ecr.eu-west-1.amazonaws.com/<name>-bikes_repo:latest
+```
+
+By following these instructions, team members can easily pull and run Docker images created by other participants. If there are any specific configurations or ports that need to be exposed, they should be added to the docker run command accordingly.
 
