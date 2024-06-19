@@ -104,7 +104,16 @@ Retrieve an authentication token and authenticate your Docker client to your reg
 Now you can start to create the microservices
 
 #### Bikes Microservices
-Locate Bikes Microservice
+Locate Bikes Microservice folder
+
+Modify this part of code on `webservice.py` with this header
+
+```
+'headers': {
+                "x-custom-version" : "1.0"
+                "x-custom-owner" : "<your name>"
+            }
+```
 
 Build your Docker image using the following command.
 
@@ -121,7 +130,16 @@ Run the following command to push this image to your newly created AWS repositor
 Your microservice is Up & Running
 
 #### Cars Microservices
-Locate Cars Microservice
+Locate Cars Microservice folder
+
+Modify this part of code on `webservice.py` with this header
+
+```
+'headers': {
+                "x-custom-version" : "1.0"
+                "x-custom-owner" : "<your name>"
+            }
+```
 
 Build your Docker image using the following command.
 
