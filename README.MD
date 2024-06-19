@@ -64,7 +64,7 @@ This command downloads a test image and runs it in a container. When the contain
 Clone the repository
 
 ```
-git clone https://github.com/r3recube/re3_workshops_devops
+git clone https://github.com/PaoloL/INE_DevOps
 ```
 
 Initialize Terraform
