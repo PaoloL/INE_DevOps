@@ -70,12 +70,16 @@ git clone https://github.com/PaoloL/INE_DevOps
 Initialize Terraform
 
 ```
-terraform init
+cd INE_DevOps
 ```
 
 on `terraform.tfvars` set the variable with the following:
 - owner = *your name, lowercase without space (ex. paololatella)*
 - aws_region = "eu-west-1"
+
+```
+terraform init
+```
 
 Validate the Terraform template
 
@@ -105,6 +109,9 @@ Now you can start to create the microservices
 
 #### Bikes Microservices
 Locate Bikes Microservice folder
+```
+cd INE_DevOps/BikesMicroservices
+```
 
 Modify this part of code on `webservice.py` with this header
 
@@ -127,10 +134,14 @@ Run the following command to push this image to your newly created AWS repositor
 
 `docker push 983441761380.dkr.ecr.eu-west-1.amazonaws.com/<yourname>-bikes_repo:latest` 
 
-Your microservice is Up & Running
+Your microservice is published
 
 #### Cars Microservices
 Locate Cars Microservice folder
+
+```
+cd INE_DevOps/CarsMicroservices
+```
 
 Modify this part of code on `webservice.py` with this header
 
@@ -147,11 +158,11 @@ Build your Docker image using the following command.
 
 Tag your image so you can push the image to this repository:
 
-`docker tag cars:latest 983441761380.dkr.ecr.eu-west-1.amazonaws.com/<yourname>-bikes_repo:latest`
+`docker tag cars:latest 983441761380.dkr.ecr.eu-west-1.amazonaws.com/<yourname>-cars_repo:latest`
 
 Run the following command to push this image to your newly created AWS repository:
 
-`docker push 983441761380.dkr.ecr.eu-west-1.amazonaws.com/<yourname>-bikes_repo:latest` 
+`docker push 983441761380.dkr.ecr.eu-west-1.amazonaws.com/<yourname>-cars_repo:latest` 
 
 Your microservice is published
 
@@ -166,8 +177,10 @@ docker pull 983441761380.dkr.ecr.eu-west-1.amazonaws.com/<name>-bikes_repo:lates
 Run Docker Image:
 
 ```
-docker run -d --name <container-name> 983441761380.dkr.ecr.eu-west-1.amazonaws.com/<name>-bikes_repo:latest
+docker run -p 5000:5000 983441761380.dkr.ecr.eu-west-1.amazonaws.com/<name>-bikes_repo:latest
 ```
+
+Test 
 
 By following these instructions, team members can easily pull and run Docker images created by other participants. If there are any specific configurations or ports that need to be exposed, they should be added to the docker run command accordingly.
 
@@ -196,10 +209,12 @@ Verify installation
 kubectl version --client
 ```
 
-Update kubectl config
+Update kubectl config 
+
+Use `<aws_region> = "eu-west-1"`
 
 ```
-aws eks update-kubeconfig --region region-code --name <your-name>-my-eks-cluster
+aws eks update-kubeconfig --region <aws_region> --name <your-name>-my-eks-cluster
 ```
 
 ### Task-8: Create your K8s Deployment
